@@ -1,5 +1,6 @@
 const baseUrl = "https://api.searchspring.net/api/search/search.json"
 
+//Making a call to the Searchspring API and fetching data.
 const queryFetch = (searchTerm) => {
     return new Promise((resolve) => {
         fetch(baseUrl + '?' + new URLSearchParams({
@@ -18,4 +19,12 @@ const queryFetch = (searchTerm) => {
     })
 }
 
-console.log(queryFetch("dress"));
+$(document).ready(function(){
+    let searchTerm = $("#search-term").attr("value");
+
+    $("#search-btn").click((e) => {
+        e.preventDefault();
+        let result = queryFetch(searchTerm);
+        console.log(result);
+    })
+})
