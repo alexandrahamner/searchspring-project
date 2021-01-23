@@ -6,20 +6,37 @@
         <title>Searchspring Search</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
         <link rel="stylesheet" href="main.css">
     </head>
     <body>
+        <nav>
+            <div class="ui secondary menu">
+                <div class="item">
+                    <div class="ui icon input">
+                        <input id="search-term" type="search" placeholder="Search..." />
+                        <i id="search-btn" class="search link icon"></i>
+                      </div>
+                </div>
+            </div>
+        </nav>
+
+        <main>
+            <section class="results">
+                <div class="grid-container" id="search-results">
+                    <!-- Results Populate here -->
+                </div> 
+            </section>
+        </main>
+
 
         
-
-
-
-
         <script 
             src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" 
             crossorigin="anonymous">
         </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
         <script src="key.js"></script>
         <script src="script.js" async defer></script>
     </body>
