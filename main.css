@@ -1,3 +1,7 @@
 body {
     margin: 50px;
 }
+
+.prev-btn, .next-btn {
+    display: none;
+}

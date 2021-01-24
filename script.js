@@ -3,7 +3,7 @@ const baseUrl = "https://api.searchspring.net/api/search/search.json"
 //Making a call to the Searchspring API and fetching data. 
 //Calls the paginationData function to save page information for pagination on the web application.
 const queryFetch = (searchTerm, pageNumber) => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         fetch(baseUrl + '?' + new URLSearchParams({
             q: searchTerm,
             resultsFormat: 'native',
@@ -14,7 +14,9 @@ const queryFetch = (searchTerm, pageNumber) => {
             .then(data => {
                 resolve(data);
                 console.log(data);
-                paginationData(data);
+                let pageInfo = paginationData(data);
+                displayPrevBtn(pageInfo);
+                displayNextBtn(pageInfo);
                 createResultObjects(data);
             })
             .catch(error => {
@@ -23,19 +25,35 @@ const queryFetch = (searchTerm, pageNumber) => {
     })
 }
 
+//PAGINATION
+
 //Gathers the necessary pagination data and creates pageInfo object. Will be used for the pagination functionality.
 const paginationData = (data) => {
     let pageInfo = {
         currentPage: data.pagination.currentPage,
-        nextPage: data.pagination.nextPage,
+        nextPage: data.pagination.nextPage ?? "data unavailable",
         currentPage: data.pagination.currentPage,
         defaultPerPage: data.pagination.defaultPerPage,
-        previousPage: data.pagination.previousPage ?? "data unavailable",
+        previousPage: data.pagination.previousPage,
         totalResults: data.pagination.totalResults
     }
     console.log(pageInfo);
     return pageInfo;
 }
+
+const displayPrevBtn = (pageInfo) => {
+    if(pageInfo.previousPage != 0) {
+        $(".prev-btn").css("display", "block");
+    }
+}
+
+const displayNextBtn = (pageInfo) => {
+    if(pageInfo.nextPage != 0) {
+        $(".next-btn").css("display", "block");
+    }
+}
+
+//RESULTS
 
 // This function takes the result from the queryFetch and stores the necessary data for each result as objects, they are then pushed to an array.
 // Once data is stored, the array is passed through the displayResultObjects function.
@@ -99,7 +117,7 @@ $(document).ready(function(){
         e.preventDefault();
         let searchTerm = $("#search-term").val();
         console.log(searchTerm)
-        queryFetch(searchTerm, 1);
+        queryFetch(searchTerm, 55);
     })
 
     // In case a user presses 'Enter' instead of clicking the search button.
