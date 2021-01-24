@@ -43,13 +43,19 @@ const paginationData = (data) => {
 
 const displayPrevBtn = (pageInfo) => {
     if(pageInfo.previousPage != 0) {
-        $(".prev-btn").css("display", "block");
+        $(".prev-btn").val(pageInfo.previousPage);
+        $(".prev-btn").css("display", "inline-block");
+    } else {
+        $(".prev-btn").css("display", "none");
     }
 }
 
 const displayNextBtn = (pageInfo) => {
     if(pageInfo.nextPage != 0) {
-        $(".next-btn").css("display", "block");
+        $(".next-btn").val(pageInfo.nextPage);
+        $(".next-btn").css("display", "inline-block");
+    } else {
+        $(".next-btn").css("display", "none");
     }
 }
 
@@ -105,7 +111,7 @@ const displayResultObjects = (formattedObjects) => {
         resultsHTML += createResultCard(obj);
     })
    
-    $("#search-results").append(resultsHTML);
+    $("#search-results").html(resultsHTML);
 }
  
 
@@ -117,7 +123,7 @@ $(document).ready(function(){
         e.preventDefault();
         let searchTerm = $("#search-term").val();
         console.log(searchTerm)
-        queryFetch(searchTerm, 55);
+        queryFetch(searchTerm, 1);
     })
 
     // In case a user presses 'Enter' instead of clicking the search button.
@@ -125,6 +131,20 @@ $(document).ready(function(){
         if(e.which == 13){//Enter key pressed
             $('#search-btn').click();//Trigger search button click event
         }
+    })
+
+    $(".prev-btn").click((e) => {
+        e.preventDefault();
+        let searchTerm = $("#search-term").val();
+        let prevPage = $(".prev-btn").val();
+        queryFetch(searchTerm, prevPage);
+    })
+
+    $(".next-btn").click((e) => {
+        e.preventDefault();
+        let searchTerm = $("#search-term").val();
+        let nextPage = $(".next-btn").val();
+        queryFetch(searchTerm, nextPage);
     })
 
 })
