@@ -92,13 +92,15 @@ const createResultCard = (formattedObj) => {
             <div class="result-name-container">
                 <p class="result-name">${formattedObj.name}</p>
             </div>
-            <div class="book-card book-info">
-                <p class="result-msrp">${formattedObj.msrp}</p>
-                <p class="result-price">${formattedObj.price}</p>
-            </div>
-            <div class="add-cart-container">
-                <button class="add-cart-btn">Add to Cart</button>
-            </div>
+            <div class="price-and-cart">
+                <div class="result-price-container">
+                    <p class="result-msrp">$${formattedObj.msrp}</p>
+                    <p class="result-price">$${formattedObj.price}</p>
+                </div>
+                <div class="add-cart-container">
+                    <i class="shopping cart large icon add-cart-btn"></i>
+                </div>
+            </div>    
         </div>`
     return finalHTML;
 }
