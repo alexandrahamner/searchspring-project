@@ -9,12 +9,12 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
         <link rel="stylesheet" href="main.css">
     </head>
-    <body>
+    <body id="top">
         <!-- Navigation Bar -->
         <nav>
             <div class="ui borderless menu">
                 <div class="header item">
-                    eShop
+                    <img src="img/shopily-logo.svg" alt="shopily-logo" />
                   </div>
                 <div class="right menu">
                     <div class="item">
@@ -30,73 +30,89 @@
                 </div>
             </div>
         </nav>
-        <!-- Header with buttons to search for featured items -->
-        <header class="fashion-header">
-            <div class="large-header" id="spring-clothes">
-                <div>
-                    <h1>Spring is Here</h1>
-                    <button class="shop-now-btn-lg" data-id="spring">Shop Now</button>
-                </div>
-                <img src="img/searchspring-img-5.svg" alt="illustraion of woman" />
-            </div>
-            <div class="smaller-header-container">
-                <div class="small-header" id="tops">
-                    <img src="img/searchspring-img-2.svg" alt="illustraion of woman" />
+        <div id="content-wrap">
+            <!-- Header with buttons to search for featured items -->
+            <header class="fashion-header">
+                <div class="large-header" id="spring-clothes">
                     <div>
-                        <h2>Tops</h2>
-                        <button class="shop-now-btn btn-styling" data-id="tops">Shop Now</button>
+                        <h1>Spring is Here</h1>
+                        <button class="shop-now-btn-lg" data-id="spring">Shop Now</button>
+                    </div>
+                    <img src="img/searchspring-img-5.svg" alt="illustraion of woman" />
+                </div>
+                <div class="smaller-header-container">
+                    <div class="small-header" id="tops">
+                        <img src="img/searchspring-img-2.svg" alt="illustraion of woman" />
+                        <div>
+                            <h2>Tops</h2>
+                            <button class="shop-now-btn btn-styling" data-id="tops">Shop Now</button>
+                        </div>
+                    </div>
+                    <div class="small-header" id="shoes">
+                        <img src="img/searchspring-img-4.svg" alt="illustraion of woman" />
+                        <div>
+                            <h2>Shoes</h2>
+                            <button class="shop-now-btn btn-styling" data-id="shoes">Shop Now</button>
+                        </div>
+                    </div>
+                    <div class="small-header" id="jeans">
+                        <img src="img/searchspring-img-3.svg" alt="illustraion of woman" />
+                        <div>
+                            <h2>Jeans</h2>
+                            <button class="shop-now-btn btn-styling" data-id="jeans">Shop Now</button>
+                        </div>
+                    </div>
+                    <div class="small-header" id="dresses">
+                        <img src="img/searchspring-img-1.svg" alt="illustraion of woman" />
+                        <div>
+                            <h2>Dresses</h2>
+                            <button class="shop-now-btn btn-styling" data-id="dress">Shop Now</button>
+                        </div>
                     </div>
                 </div>
-                <div class="small-header" id="shoes">
-                    <img src="img/searchspring-img-4.svg" alt="illustraion of woman" />
-                    <div>
-                        <h2>Shoes</h2>
-                        <button class="shop-now-btn btn-styling" data-id="shoes">Shop Now</button>
+            </header>
+            <!-- This will display after a search has been made -->
+            <main>
+                <div class="pagination">
+                    <div class="pagination-left">
+                        <div class="searched-term-display-container">
+                            <!-- Searched term will display here -->
+                        </div>
+                    </div>
+                    <div class="pagination-right">
+                        <div class="next-prev-btn-container">
+                            <button class="prev-btn btn-styling" type="submit"><i class="arrow left icon"></i> Previous Page</button>
+                            <button class="next-btn btn-styling" type="submit">Next Page <i class="arrow right icon"></i></button>
+                        </div>
                     </div>
                 </div>
-                <div class="small-header" id="jeans">
-                    <img src="img/searchspring-img-3.svg" alt="illustraion of woman" />
-                    <div>
-                        <h2>Jeans</h2>
-                        <button class="shop-now-btn btn-styling" data-id="jeans">Shop Now</button>
+                <!-- Results Section -->
+                <section class="results">
+                    <div class="grid-container" id="search-results">
+                        <!-- Results Populate here -->
+                    </div> 
+                </section>
+                <div class="pagination pagination-bottom">
+                    <div class="pagination-right">
+                        <div class="next-prev-btn-container">
+                            <button class="prev-btn btn-styling" type="submit"><i class="arrow left icon"></i> Previous Page</button>
+                            <button class="next-btn btn-styling" type="submit">Next Page <i class="arrow right icon"></i></button>
+                        </div>
                     </div>
                 </div>
-                <div class="small-header" id="dresses">
-                    <img src="img/searchspring-img-1.svg" alt="illustraion of woman" />
-                    <div>
-                        <h2>Dresses</h2>
-                        <button class="shop-now-btn btn-styling" data-id="dress">Shop Now</button>
-                    </div>
+            </main>
+        </div>
+        
+        
+        <footer>
+            <div id="footer-container">
+                <div id="media-icon-container">
+                    <a href="https://github.com/alexandrahamner/searchspring-project" class="social-media-icon"><i class="github alternate big icon"></i></a>
+                    <a href="#top" class="social-media-icon footer-brand"><img src="img/shopily-logo.svg" alt="shopily-logo" /></a>
+                    <a href="https://www.linkedin.com/in/alexandrahamner/" class="social-media-icon"><i class="linkedin big icon"></i></a>
                 </div>
             </div>
-        </header>
-        <!-- This will display after a search has been made -->
-        <main>
-            <div class="pagination">
-                <div class="pagination-left">
-                    <div class="searched-term-display-container">
-                        <!-- Searched term will display here -->
-                    </div>
-                </div>
-                <div class="pagination-right">
-                    <div class="next-prev-btn-container">
-                        <button class="prev-btn btn-styling" type="submit">Previous Page</button>
-                        <button class="next-btn btn-styling" type="submit">Next Page</button>
-                    </div>
-                </div>
-            </div>
-            <!-- Results Section -->
-            <section class="results">
-                <div class="grid-container" id="search-results">
-                    <!-- Results Populate here -->
-                </div> 
-            </section>
-            <div class="next-prev-btn-container">
-                <button class="prev-btn btn-styling" type="submit">Previous Page</button>
-                <button class="next-btn btn-styling" type="submit">Next Page</button>
-            </div>
-        </main>
-
+        </footer>
 
         
         <script 

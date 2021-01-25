@@ -126,7 +126,7 @@ $(document).ready(function(){
         $("main").css("display", "block");
         let searchTerm = $("#search-term").val();
         let element = document.querySelector("main");
-        let searchTermHTML = `<h2 class="search-term-display">Searched for: ${searchTerm}</h2>`
+        let searchTermHTML = `<h2 class="search-term-display">Searched for: <span><em>${searchTerm}</em></span></h2>`
         $(".searched-term-display-container").html(searchTermHTML);
         queryFetch(searchTerm, 1);
         $(".prev-btn").data("id", searchTerm);
@@ -163,7 +163,7 @@ $(document).ready(function(){
         $("main").css("display", "block");
         let searchTerm = $(this).data("id");
         let element = document.querySelector("main");
-        let searchTermHTML = `<h2 class="search-term-display">Searched for: ${searchTerm}</h2>`
+        let searchTermHTML = `<h2 class="search-term-display">Searched for: <span><em>${searchTerm}</em></span></h2>`
         $(".searched-term-display-container").html(searchTermHTML);
         queryFetch(searchTerm, 1);
         $(".prev-btn").data("id", searchTerm);
@@ -177,7 +177,7 @@ $(document).ready(function(){
         $("main").css("display", "block");
         let searchTerm = $(this).data("id");
         let element = document.querySelector("main");
-        let searchTermHTML = `<h2 class="search-term-display">Searched for: ${searchTerm}</h2>`
+        let searchTermHTML = `<h2 class="search-term-display">Searched for: <span><em>${searchTerm}</em></span></h2>`
         $(".searched-term-display-container").html(searchTermHTML);
         queryFetch(searchTerm, 1);
         $(".prev-btn").data("id", searchTerm);
