@@ -156,4 +156,28 @@ $(document).ready(function(){
         queryFetch(searchTerm, nextPage);
     });
 
+    $(document).on("click", ".shop-now-btn", function(e) {
+        e.preventDefault;
+        $(".grid-container").css("display", "grid");
+        $("main").css("display", "block");
+        let searchTerm = $(this).data("id");
+        let element = document.querySelector("main");
+        let searchTermHTML = `<h2 class="search-term-display">${searchTerm}</h2>`
+        $(".searched-term-display-container").html(searchTermHTML);
+        queryFetch(searchTerm, 1);
+        element.scrollIntoView({behavior: "smooth"});
+    });
+
+    $(document).on("click", ".shop-now-btn-lg", function(e) {
+        e.preventDefault;
+        $(".grid-container").css("display", "grid");
+        $("main").css("display", "block");
+        let searchTerm = $(this).data("id");
+        let element = document.querySelector("main");
+        let searchTermHTML = `<h2 class="search-term-display">${searchTerm}</h2>`
+        $(".searched-term-display-container").html(searchTermHTML);
+        queryFetch(searchTerm, 1);
+        element.scrollIntoView({behavior: "smooth"});
+    });
+
 });
