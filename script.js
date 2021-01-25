@@ -3,7 +3,7 @@ const baseUrl = "https://api.searchspring.net/api/search/search.json"
 //Making a call to the Searchspring API and fetching data. 
 //Calls the paginationData function to save page information for pagination on the web application.
 const queryFetch = (searchTerm, pageNumber) => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         fetch(baseUrl + '?' + new URLSearchParams({
             q: searchTerm,
             resultsFormat: 'native',
@@ -14,7 +14,9 @@ const queryFetch = (searchTerm, pageNumber) => {
             .then(data => {
                 resolve(data);
                 console.log(data);
-                paginationData(data);
+                let pageInfo = paginationData(data);
+                displayPrevBtn(pageInfo);
+                displayNextBtn(pageInfo);
                 createResultObjects(data);
             })
             .catch(error => {
@@ -23,19 +25,41 @@ const queryFetch = (searchTerm, pageNumber) => {
     })
 }
 
+//PAGINATION
+
 //Gathers the necessary pagination data and creates pageInfo object. Will be used for the pagination functionality.
 const paginationData = (data) => {
     let pageInfo = {
         currentPage: data.pagination.currentPage,
-        nextPage: data.pagination.nextPage,
+        nextPage: data.pagination.nextPage ?? "data unavailable",
         currentPage: data.pagination.currentPage,
         defaultPerPage: data.pagination.defaultPerPage,
-        previousPage: data.pagination.previousPage ?? "data unavailable",
+        previousPage: data.pagination.previousPage,
         totalResults: data.pagination.totalResults
     }
     console.log(pageInfo);
     return pageInfo;
 }
+
+const displayPrevBtn = (pageInfo) => {
+    if(pageInfo.previousPage != 0) {
+        $(".prev-btn").val(pageInfo.previousPage);
+        $(".prev-btn").css("display", "inline-block");
+    } else {
+        $(".prev-btn").css("display", "none");
+    }
+}
+
+const displayNextBtn = (pageInfo) => {
+    if(pageInfo.nextPage != 0) {
+        $(".next-btn").val(pageInfo.nextPage);
+        $(".next-btn").css("display", "inline-block");
+    } else {
+        $(".next-btn").css("display", "none");
+    }
+}
+
+//RESULTS
 
 // This function takes the result from the queryFetch and stores the necessary data for each result as objects, they are then pushed to an array.
 // Once data is stored, the array is passed through the displayResultObjects function.
@@ -68,13 +92,15 @@ const createResultCard = (formattedObj) => {
             <div class="result-name-container">
                 <p class="result-name">${formattedObj.name}</p>
             </div>
-            <div class="book-card book-info">
-                <p class="result-msrp">${formattedObj.msrp}</p>
-                <p class="result-price">${formattedObj.price}</p>
-            </div>
-            <div class="add-cart-container">
-                <button class="add-cart-btn">Add to Cart</button>
-            </div>
+            <div class="price-and-cart">
+                <div class="result-price-container">
+                    <p class="result-msrp">$${formattedObj.msrp}</p>
+                    <p class="result-price">$${formattedObj.price}</p>
+                </div>
+                <div class="add-cart-container">
+                    <i class="shopping cart large icon add-cart-btn"></i>
+                </div>
+            </div>    
         </div>`
     return finalHTML;
 }
@@ -87,7 +113,7 @@ const displayResultObjects = (formattedObjects) => {
         resultsHTML += createResultCard(obj);
     })
    
-    $("#search-results").append(resultsHTML);
+    $("#search-results").html(resultsHTML);
 }
  
 
@@ -107,6 +133,20 @@ $(document).ready(function(){
         if(e.which == 13){//Enter key pressed
             $('#search-btn').click();//Trigger search button click event
         }
+    })
+
+    $(".prev-btn").click((e) => {
+        e.preventDefault();
+        let searchTerm = $("#search-term").val();
+        let prevPage = $(".prev-btn").val();
+        queryFetch(searchTerm, prevPage);
+    })
+
+    $(".next-btn").click((e) => {
+        e.preventDefault();
+        let searchTerm = $("#search-term").val();
+        let nextPage = $(".next-btn").val();
+        queryFetch(searchTerm, nextPage);
     })
 
 })

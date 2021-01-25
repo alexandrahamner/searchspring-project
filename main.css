@@ -1,3 +1,117 @@
-body {
-    margin: 50px;
+* {
+    box-sizing: border-box;
+    margin: 0;
+} 
+
+.borderless {
+    padding: 0 2%;
 }
+
+.prev-btn, .next-btn {
+    display: none;
+}
+
+.results {
+    display: flex;
+    justify-content: center;
+}
+
+.result-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    -webkit-box-shadow: 0px 10px 13px -7px #b3b2b2, 5px 5px 15px 5px rgba(0,0,0,0); 
+    box-shadow: 0px 10px 13px -7px #b3b2b2, 5px 5px 15px 5px rgba(0,0,0,0);
+
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.result-thumbnail {
+    width: 100%;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+.result-name-container {
+    margin: 5px;
+    width: 80%;
+}
+
+.result-name {
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.price-and-cart {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.result-price-container {
+    margin: 10px 0;
+}
+
+.result-msrp, .result-price {
+    display: inline;
+    margin: 0 2px;
+    font-size: 1.2rem;
+}
+
+.result-msrp {
+    text-decoration: line-through;
+    color: rgb(122, 122, 122);
+}
+
+.result-price {
+    font-weight: 700;
+    color: tomato;
+}
+
+i.large.icon {
+    line-height: 1.7;
+}
+
+i.large.icon:hover {
+    transform: translateY(-4px);
+    color: #57c4e5;
+    cursor: pointer;
+}
+
+/* Small to Medium devices (768px and up) */
+@media screen and (min-width:600px) { 
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 225px);
+        grid-template-rows: repeat(12, 455px);
+        grid-column-gap: 20px;
+        grid-row-gap: 40px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media screen and (min-width:768px) { 
+    .grid-container {
+        grid-template-columns: repeat(3, 225px);
+        grid-template-rows: repeat(8, 455px);
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media screen and (min-width:992px) { 
+
+ }
+
+ /* Extra large devices (large desktops, 1200px and up) */
+@media screen and (min-width:1200px) { 
+    .grid-container {
+        grid-template-columns: repeat(4, 225px);
+        grid-template-rows: repeat(6, 455px);
+        /* grid-column-gap: 20px;
+        grid-row-gap: 40px; */
+    }
+ }

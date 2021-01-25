@@ -11,28 +11,72 @@
     </head>
     <body>
         <nav>
-            <div class="ui secondary menu">
-                <div class="item">
-                    <div class="ui icon input">
-                        <input id="search-term" type="search" placeholder="Search..." />
-                        <i id="search-btn" class="search link icon"></i>
-                      </div>
+            <div class="ui borderless menu">
+                <div class="header item">
+                    eShop
+                  </div>
+                <div class="right menu">
+                    <div class="ui simple dropdown item">
+                        Categories <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <div class="header">Clothing</div>
+                            <a class="item">Tops</a>
+                            <a class="item">Sweaters</a>
+                            <a class="item">Jackets</a>
+                            <a class="item">Pants</a>
+                            <a class="item">Jeans</a>
+                            <a class="item">Dresses</a>
+                            <a class="item">Jumpsuits</a>
+                            <a class="item">Activewear</a>
+                            <div class="header">Accessories</div>
+                            <a class="item">Bags</a>
+                            <a class="item">Sunglasses</a>
+                            <a class="item">Jewelry</a>
+                            <a class="item">Shoes</a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="ui icon input">
+                            <input id="search-term" type="search" placeholder="Search..." />
+                            <i id="search-btn" class="search link icon"></i>
+                          </div>
+                    </div>
+                    <div class="item">
+                        <i class="shopping cart icon add-cart-btn"></i> 
+                        <p>0</p>
+                    </div>
                 </div>
             </div>
         </nav>
+        <header class="fashion-header">
+            <div class="large-header" id="spring-clothes"></div>
+            <div class="smaller-header-container">
+                <div class="small-header" id="dresses"></div>
+                <div class="small-header" id="tops"></div>
+                <div class="small-header" id="jeans"></div>
+                <div class="small-header" id="shoes"></div>
+            </div>
+        </header>
         <main>
             <div class="next-prev-btn-container">
-                <button class="next-btn" type="submit">Next Page</button>
                 <button class="prev-btn" type="submit">Previous Page</button>
+                <button class="next-btn" type="submit">Next Page</button>
+            </div>
+            <!-- This will display after a search has been made -->
+            <div class="number-of-results-container">
+                <p>Total Results: <span id="total-results"> <!-- # of results go here --></span></p>
             </div>
             <section class="results">
+                <div class="searched-term-display-container">
+                    <!-- Searched term will display here -->
+                </div>
                 <div class="grid-container" id="search-results">
                     <!-- Results Populate here -->
                 </div> 
             </section>
             <div class="next-prev-btn-container">
-                <button class="next-btn" type="submit">Next Page</button>
                 <button class="prev-btn" type="submit">Previous Page</button>
+                <button class="next-btn" type="submit">Next Page</button>
             </div>
         </main>
 
