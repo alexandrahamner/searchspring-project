@@ -108,11 +108,26 @@ const createResultCard = (formattedObj) => {
 const displayResultObjects = (formattedObjects) => {
     console.log(formattedObjects);
     let resultsHTML = "";
-    formattedObjects.forEach(obj => {
-        resultsHTML += createResultCard(obj);
-    })
-   
-    $("#search-results").html(resultsHTML);
+    let element = document.querySelector("main");
+    if(formattedObjects.length != 0) {
+        formattedObjects.forEach(obj => {
+            resultsHTML += createResultCard(obj);
+        })
+        $(".grid-container").css("display", "grid");
+        $("main").css("display", "block");
+        $(".no-results").css("display", "none");
+        $("#search-results").html(resultsHTML);
+    } else {
+        resultsHTML += `<h2>No Results Found!</h2>`
+        $("main").css("display", "block");
+        $(".grid-container").css("display", "none");
+        $(".no-results").css("display", "flex").html(resultsHTML);
+    }
+    element.scrollIntoView({behavior: "smooth"});
+}
+
+const checkValidSearch = (formattedObjects) => {
+
 }
  
 
@@ -122,16 +137,12 @@ $(document).ready(function(){
     // User input taken from the search bar, passed through the query fetch function and create object function, for now.
     $("#search-btn").click((e) => {
         e.preventDefault();
-        $(".grid-container").css("display", "grid");
-        $("main").css("display", "block");
-        let searchTerm = $("#search-term").val();
-        let element = document.querySelector("main");
+        let searchTerm = $("#search-term").val(); 
         let searchTermHTML = `<h2 class="search-term-display">Searched for: <span><em>${searchTerm}</em></span></h2>`
         $(".searched-term-display-container").html(searchTermHTML);
         queryFetch(searchTerm, 1);
         $(".prev-btn").data("id", searchTerm);
         $(".next-btn").data("id", searchTerm);
-        element.scrollIntoView({behavior: "smooth"});
     });
 
     // In case a user presses 'Enter' instead of clicking the search button.
@@ -159,30 +170,22 @@ $(document).ready(function(){
 
     $(document).on("click", ".shop-now-btn", function(e) {
         e.preventDefault;
-        $(".grid-container").css("display", "grid");
-        $("main").css("display", "block");
         let searchTerm = $(this).data("id");
-        let element = document.querySelector("main");
         let searchTermHTML = `<h2 class="search-term-display">Searched for: <span><em>${searchTerm}</em></span></h2>`
         $(".searched-term-display-container").html(searchTermHTML);
         queryFetch(searchTerm, 1);
         $(".prev-btn").data("id", searchTerm);
         $(".next-btn").data("id", searchTerm);
-        element.scrollIntoView({behavior: "smooth"});
     });
 
     $(document).on("click", ".shop-now-btn-lg", function(e) {
         e.preventDefault;
-        $(".grid-container").css("display", "grid");
-        $("main").css("display", "block");
         let searchTerm = $(this).data("id");
-        let element = document.querySelector("main");
         let searchTermHTML = `<h2 class="search-term-display">Searched for: <span><em>${searchTerm}</em></span></h2>`
         $(".searched-term-display-container").html(searchTermHTML);
         queryFetch(searchTerm, 1);
         $(".prev-btn").data("id", searchTerm);
         $(".next-btn").data("id", searchTerm);
-        element.scrollIntoView({behavior: "smooth"});
     });
 
 });

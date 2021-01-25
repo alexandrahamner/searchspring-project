@@ -157,7 +157,7 @@ main {
     font-size: 2.5rem;
 }
 
-.results {
+.no-results, .results {
     display: flex;
     justify-content: center;
 }
