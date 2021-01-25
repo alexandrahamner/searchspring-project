@@ -376,7 +376,7 @@ i.icon.github.alternate:before,  i.icon.linkedin:before{
 /* Large devices (desktops, 1032px and up) */
 @media screen and (min-width:1032px) { 
     .large-header div h1 {
-    font-size: 4rem;
+    font-size: 3.5rem;
     }
 
     .shop-now-btn-lg {

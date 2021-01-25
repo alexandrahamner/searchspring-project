@@ -40,6 +40,7 @@ const paginationData = (data) => {
     return pageInfo;
 }
 
+//Conditionals for Next/Prev buttons, will not display is next page/prev page = 0
 const displayPrevBtn = (pageInfo) => {
     if(pageInfo.previousPage != 0) {
         $(".prev-btn").val(pageInfo.previousPage);
@@ -83,6 +84,8 @@ const createResultObjects= (data) => {
 //This function creates a result card (in HTML) for each formatted result object.
 const createResultCard = (formattedObj) => {
     let finalHTML = "";
+    //Conditional to Take Care of MSRP pricing
+    // Displays MSRP is price is small than MSRP
     if(formattedObj.price < formattedObj.msrp) {
         finalHTML += 
         `<div class="result-card">
@@ -103,6 +106,7 @@ const createResultCard = (formattedObj) => {
             </div>    
         </div>`
     } else {
+        // Does not display MSRP if price equals or is greater than MSRP
         finalHTML += 
         `<div class="result-card">
             <div class="result-img-container">
@@ -130,6 +134,7 @@ const displayResultObjects = (formattedObjects) => {
     console.log(formattedObjects);
     let resultsHTML = "";
     let element = document.querySelector("main");
+    //Conditional for invalid/no result searches
     if(formattedObjects.length != 0) {
         formattedObjects.forEach(obj => {
             resultsHTML += createResultCard(obj);
@@ -144,16 +149,12 @@ const displayResultObjects = (formattedObjects) => {
         $(".grid-container").css("display", "none");
         $(".no-results").css("display", "flex").html(resultsHTML);
     }
+    //Scroll to the main section to see results
     element.scrollIntoView({behavior: "smooth"});
 }
 
-const checkValidSearch = (formattedObjects) => {
 
-}
- 
-
-
-// Using jQuery for DOM events
+// DOM EVENTS USING JQUERY
 $(document).ready(function(){
     // User input taken from the search bar, passed through the query fetch function and create object function, for now.
     $("#search-btn").click((e) => {
@@ -189,6 +190,7 @@ $(document).ready(function(){
         queryFetch(searchTerm, nextPage);
     });
 
+    //Those a query search of button's date-id when smaller header button is clicked
     $(document).on("click", ".shop-now-btn", function(e) {
         e.preventDefault;
         let searchTerm = $(this).data("id");
@@ -199,6 +201,7 @@ $(document).ready(function(){
         $(".next-btn").data("id", searchTerm);
     });
 
+    //Those a query search of "spring" when larger header button is clicked
     $(document).on("click", ".shop-now-btn-lg", function(e) {
         e.preventDefault;
         let searchTerm = $(this).data("id");
@@ -208,5 +211,12 @@ $(document).ready(function(){
         $(".prev-btn").data("id", searchTerm);
         $(".next-btn").data("id", searchTerm);
     });
+
+    //Paying homage to the Codepen interview exercise :) 
+    $(document).on("click", ".add-cart-container", function(e) {
+        let cartSize = $("#cart-size").text();
+        let newCartSize = parseFloat(cartSize) + 1;
+        $("#cart-size").text(newCartSize);
+      });
 
 });
