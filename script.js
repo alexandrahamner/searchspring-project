@@ -83,7 +83,8 @@ const createResultObjects= (data) => {
 //This function creates a result card (in HTML) for each formatted result object.
 const createResultCard = (formattedObj) => {
     let finalHTML = "";
-    finalHTML += 
+    if(formattedObj.price < formattedObj.msrp) {
+        finalHTML += 
         `<div class="result-card">
             <div class="result-img-container">
                 <img src="${formattedObj.imageUrl}" class="result-thumbnail" alt="Image for ${formattedObj.name}" onError="this.onerror=null;this.src='img/default-thumbnail.png';"/>
@@ -101,6 +102,26 @@ const createResultCard = (formattedObj) => {
                 </div>
             </div>    
         </div>`
+    } else {
+        finalHTML += 
+        `<div class="result-card">
+            <div class="result-img-container">
+                <img src="${formattedObj.imageUrl}" class="result-thumbnail" alt="Image for ${formattedObj.name}" onError="this.onerror=null;this.src='img/default-thumbnail.png';"/>
+            </div>
+            <div class="result-name-container">
+                <p class="result-name">${formattedObj.name}</p>
+            </div>
+            <div class="price-and-cart">
+                <div class="result-price-container">
+                    <p class="no-msrp">$${formattedObj.price}</p>
+                </div>
+                <div class="add-cart-container">
+                    <i class="shopping cart large icon add-cart-btn"></i>
+                </div>
+            </div>    
+        </div>`
+    }
+    
     return finalHTML;
 }
 
