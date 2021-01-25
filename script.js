@@ -123,30 +123,37 @@ $(document).ready(function(){
     // User input taken from the search bar, passed through the query fetch function and create object function, for now.
     $("#search-btn").click((e) => {
         e.preventDefault();
+        $(".grid-container").css("display", "grid");
+        $("main").css("display", "block");
         let searchTerm = $("#search-term").val();
-        console.log(searchTerm)
+        let element = document.querySelector("main");
+        let searchTermHTML = `<h2 class="search-term-display">${searchTerm}</h2>`
+        $(".searched-term-display-container").html(searchTermHTML);
         queryFetch(searchTerm, 1);
-    })
+        element.scrollIntoView({behavior: "smooth"});
+    });
 
     // In case a user presses 'Enter' instead of clicking the search button.
     $("#search-term").keypress((e) => {
         if(e.which == 13){//Enter key pressed
             $('#search-btn').click();//Trigger search button click event
         }
-    })
+    });
 
+    //Button to go to the previous page
     $(".prev-btn").click((e) => {
         e.preventDefault();
         let searchTerm = $("#search-term").val();
         let prevPage = $(".prev-btn").val();
         queryFetch(searchTerm, prevPage);
-    })
+    });
 
+    //Button to go to the next page
     $(".next-btn").click((e) => {
         e.preventDefault();
         let searchTerm = $("#search-term").val();
         let nextPage = $(".next-btn").val();
         queryFetch(searchTerm, nextPage);
-    })
+    });
 
-})
+});
