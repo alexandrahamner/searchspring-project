@@ -10,31 +10,13 @@
         <link rel="stylesheet" href="main.css">
     </head>
     <body>
+        <!-- Navigation Bar -->
         <nav>
             <div class="ui borderless menu">
                 <div class="header item">
                     eShop
                   </div>
                 <div class="right menu">
-                    <div class="ui simple dropdown item">
-                        Categories <i class="dropdown icon"></i>
-                        <div class="menu">
-                            <div class="header">Clothing</div>
-                            <a class="item">Tops</a>
-                            <a class="item">Sweaters</a>
-                            <a class="item">Jackets</a>
-                            <a class="item">Pants</a>
-                            <a class="item">Jeans</a>
-                            <a class="item">Dresses</a>
-                            <a class="item">Jumpsuits</a>
-                            <a class="item">Activewear</a>
-                            <div class="header">Accessories</div>
-                            <a class="item">Bags</a>
-                            <a class="item">Sunglasses</a>
-                            <a class="item">Jewelry</a>
-                            <a class="item">Shoes</a>
-                        </div>
-                    </div>
                     <div class="item">
                         <div class="ui icon input">
                             <input id="search-term" type="search" placeholder="Search..." />
@@ -48,28 +30,62 @@
                 </div>
             </div>
         </nav>
+        <!-- Header with buttons to search for featured items -->
         <header class="fashion-header">
-            <div class="large-header" id="spring-clothes"></div>
+            <div class="large-header" id="spring-clothes">
+                <div>
+                    <h1>Spring is Here</h1>
+                    <button class="shop-now-btn" value="dress">Shop Now</button>
+                </div>
+                <img src="img/searchspring-img-5.svg" alt="illustraion of woman" />
+            </div>
             <div class="smaller-header-container">
-                <div class="small-header" id="dresses"></div>
-                <div class="small-header" id="tops"></div>
-                <div class="small-header" id="jeans"></div>
-                <div class="small-header" id="shoes"></div>
+                <div class="small-header" id="tops">
+                    <img src="img/searchspring-img-2.svg" alt="illustraion of woman" />
+                    <div>
+                        <h2>Tops</h2>
+                        <button class="shop-now-btn" value="tops">Shop Now</button>
+                    </div>
+                </div>
+                <div class="small-header" id="shoes">
+                    <img src="img/searchspring-img-4.svg" alt="illustraion of woman" />
+                    <div>
+                        <h2>Shoes</h2>
+                        <button class="shop-now-btn" value="shoes">Shop Now</button>
+                    </div>
+                </div>
+                <div class="small-header" id="jeans">
+                    <img src="img/searchspring-img-3.svg" alt="illustraion of woman" />
+                    <div>
+                        <h2>Jeans</h2>
+                        <button class="shop-now-btn" value="jeans">Shop Now</button>
+                    </div>
+                </div>
+                <div class="small-header" id="dresses">
+                    <img src="img/searchspring-img-1.svg" alt="illustraion of woman" />
+                    <div>
+                        <h2>Dresses</h2>
+                        <button class="shop-now-btn" value="dress">Shop Now</button>
+                    </div>
+                </div>
             </div>
         </header>
+        <!-- This will display after a search has been made -->
         <main>
             <div class="next-prev-btn-container">
                 <button class="prev-btn" type="submit">Previous Page</button>
                 <button class="next-btn" type="submit">Next Page</button>
             </div>
-            <!-- This will display after a search has been made -->
-            <div class="number-of-results-container">
-                <p>Total Results: <span id="total-results"> <!-- # of results go here --></span></p>
+             <div class="number-of-results-container">
+                <p>Total Results: 
+                    <span id="total-results"><!-- # of results go here --></span>
+                </p>
             </div>
+            <div class="searched-term-display-container">
+                <!-- Searched term will display here -->
+            </div>
+            <!-- Results Section -->
             <section class="results">
-                <div class="searched-term-display-container">
-                    <!-- Searched term will display here -->
-                </div>
                 <div class="grid-container" id="search-results">
                     <!-- Results Populate here -->
                 </div> 
