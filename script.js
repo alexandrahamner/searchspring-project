@@ -40,6 +40,7 @@ const paginationData = (data) => {
     return pageInfo;
 }
 
+//Conditionals for Next/Prev buttons, will not display is next page/prev page = 0
 const displayPrevBtn = (pageInfo) => {
     if(pageInfo.previousPage != 0) {
         $(".prev-btn").val(pageInfo.previousPage);
@@ -83,7 +84,10 @@ const createResultObjects= (data) => {
 //This function creates a result card (in HTML) for each formatted result object.
 const createResultCard = (formattedObj) => {
     let finalHTML = "";
-    finalHTML += 
+    //Conditional to Take Care of MSRP pricing
+    // Displays MSRP is price is small than MSRP
+    if(formattedObj.price < formattedObj.msrp) {
+        finalHTML += 
         `<div class="result-card">
             <div class="result-img-container">
                 <img src="${formattedObj.imageUrl}" class="result-thumbnail" alt="Image for ${formattedObj.name}" onError="this.onerror=null;this.src='img/default-thumbnail.png';"/>
@@ -101,6 +105,27 @@ const createResultCard = (formattedObj) => {
                 </div>
             </div>    
         </div>`
+    } else {
+        // Does not display MSRP if price equals or is greater than MSRP
+        finalHTML += 
+        `<div class="result-card">
+            <div class="result-img-container">
+                <img src="${formattedObj.imageUrl}" class="result-thumbnail" alt="Image for ${formattedObj.name}" onError="this.onerror=null;this.src='img/default-thumbnail.png';"/>
+            </div>
+            <div class="result-name-container">
+                <p class="result-name">${formattedObj.name}</p>
+            </div>
+            <div class="price-and-cart">
+                <div class="result-price-container">
+                    <p class="no-msrp">$${formattedObj.price}</p>
+                </div>
+                <div class="add-cart-container">
+                    <i class="shopping cart large icon add-cart-btn"></i>
+                </div>
+            </div>    
+        </div>`
+    }
+    
     return finalHTML;
 }
 
@@ -108,30 +133,38 @@ const createResultCard = (formattedObj) => {
 const displayResultObjects = (formattedObjects) => {
     console.log(formattedObjects);
     let resultsHTML = "";
-    formattedObjects.forEach(obj => {
-        resultsHTML += createResultCard(obj);
-    })
-   
-    $("#search-results").html(resultsHTML);
+    let element = document.querySelector("main");
+    //Conditional for invalid/no result searches
+    if(formattedObjects.length != 0) {
+        formattedObjects.forEach(obj => {
+            resultsHTML += createResultCard(obj);
+        })
+        $(".grid-container").css("display", "grid");
+        $("main").css("display", "block");
+        $(".no-results").css("display", "none");
+        $("#search-results").html(resultsHTML);
+    } else {
+        resultsHTML += `<h2>No Results Found!</h2>`
+        $("main").css("display", "block");
+        $(".grid-container").css("display", "none");
+        $(".no-results").css("display", "flex").html(resultsHTML);
+    }
+    //Scroll to the main section to see results
+    element.scrollIntoView({behavior: "smooth"});
 }
- 
 
 
-// Using jQuery for DOM events
+// DOM EVENTS USING JQUERY
 $(document).ready(function(){
     // User input taken from the search bar, passed through the query fetch function and create object function, for now.
     $("#search-btn").click((e) => {
         e.preventDefault();
-        $(".grid-container").css("display", "grid");
-        $("main").css("display", "block");
-        let searchTerm = $("#search-term").val();
-        let element = document.querySelector("main");
+        let searchTerm = $("#search-term").val(); 
         let searchTermHTML = `<h2 class="search-term-display">Searched for: <span><em>${searchTerm}</em></span></h2>`
         $(".searched-term-display-container").html(searchTermHTML);
         queryFetch(searchTerm, 1);
         $(".prev-btn").data("id", searchTerm);
         $(".next-btn").data("id", searchTerm);
-        element.scrollIntoView({behavior: "smooth"});
     });
 
     // In case a user presses 'Enter' instead of clicking the search button.
@@ -157,32 +190,33 @@ $(document).ready(function(){
         queryFetch(searchTerm, nextPage);
     });
 
+    //Those a query search of button's date-id when smaller header button is clicked
     $(document).on("click", ".shop-now-btn", function(e) {
         e.preventDefault;
-        $(".grid-container").css("display", "grid");
-        $("main").css("display", "block");
         let searchTerm = $(this).data("id");
-        let element = document.querySelector("main");
         let searchTermHTML = `<h2 class="search-term-display">Searched for: <span><em>${searchTerm}</em></span></h2>`
         $(".searched-term-display-container").html(searchTermHTML);
         queryFetch(searchTerm, 1);
         $(".prev-btn").data("id", searchTerm);
         $(".next-btn").data("id", searchTerm);
-        element.scrollIntoView({behavior: "smooth"});
     });
 
+    //Those a query search of "spring" when larger header button is clicked
     $(document).on("click", ".shop-now-btn-lg", function(e) {
         e.preventDefault;
-        $(".grid-container").css("display", "grid");
-        $("main").css("display", "block");
         let searchTerm = $(this).data("id");
-        let element = document.querySelector("main");
         let searchTermHTML = `<h2 class="search-term-display">Searched for: <span><em>${searchTerm}</em></span></h2>`
         $(".searched-term-display-container").html(searchTermHTML);
         queryFetch(searchTerm, 1);
         $(".prev-btn").data("id", searchTerm);
         $(".next-btn").data("id", searchTerm);
-        element.scrollIntoView({behavior: "smooth"});
     });
+
+    //Paying homage to the Codepen interview exercise :) 
+    $(document).on("click", ".add-cart-container", function(e) {
+        let cartSize = $("#cart-size").text();
+        let newCartSize = parseFloat(cartSize) + 1;
+        $("#cart-size").text(newCartSize);
+      });
 
 });

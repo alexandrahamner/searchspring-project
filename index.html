@@ -7,6 +7,8 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="main.css">
     </head>
     <body id="top">
@@ -25,7 +27,7 @@
                     </div>
                     <div class="item">
                         <i class="shopping cart icon add-cart-btn"></i> 
-                        <p>0</p>
+                        <p id="cart-size">0</p>
                     </div>
                 </div>
             </div>
@@ -85,6 +87,9 @@
                             <button class="next-btn btn-styling" type="submit">Next Page <i class="arrow right icon"></i></button>
                         </div>
                     </div>
+                </div>
+                <div class="no-results">
+                    <!-- No Results Message Populates here -->
                 </div>
                 <!-- Results Section -->
                 <section class="results">
