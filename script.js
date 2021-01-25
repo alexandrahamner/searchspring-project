@@ -35,7 +35,6 @@ const paginationData = (data) => {
         currentPage: data.pagination.currentPage,
         defaultPerPage: data.pagination.defaultPerPage,
         previousPage: data.pagination.previousPage,
-        totalResults: data.pagination.totalResults
     }
     console.log(pageInfo);
     return pageInfo;
@@ -87,7 +86,7 @@ const createResultCard = (formattedObj) => {
     finalHTML += 
         `<div class="result-card">
             <div class="result-img-container">
-                <img src="${formattedObj.imageUrl}" class="result-thumbnail" alt="Image for ${formattedObj.name}" />
+                <img src="${formattedObj.imageUrl}" class="result-thumbnail" alt="Image for ${formattedObj.name}" onError="this.onerror=null;this.src='img/default-thumbnail.png';"/>
             </div>
             <div class="result-name-container">
                 <p class="result-name">${formattedObj.name}</p>
@@ -127,9 +126,11 @@ $(document).ready(function(){
         $("main").css("display", "block");
         let searchTerm = $("#search-term").val();
         let element = document.querySelector("main");
-        let searchTermHTML = `<h2 class="search-term-display">${searchTerm}</h2>`
+        let searchTermHTML = `<h2 class="search-term-display">Searched for: ${searchTerm}</h2>`
         $(".searched-term-display-container").html(searchTermHTML);
         queryFetch(searchTerm, 1);
+        $(".prev-btn").data("id", searchTerm);
+        $(".next-btn").data("id", searchTerm);
         element.scrollIntoView({behavior: "smooth"});
     });
 
@@ -143,7 +144,7 @@ $(document).ready(function(){
     //Button to go to the previous page
     $(".prev-btn").click((e) => {
         e.preventDefault();
-        let searchTerm = $("#search-term").val();
+        let searchTerm = $(".prev-btn").data("id");
         let prevPage = $(".prev-btn").val();
         queryFetch(searchTerm, prevPage);
     });
@@ -151,7 +152,7 @@ $(document).ready(function(){
     //Button to go to the next page
     $(".next-btn").click((e) => {
         e.preventDefault();
-        let searchTerm = $("#search-term").val();
+        let searchTerm = $(".next-btn").data("id");
         let nextPage = $(".next-btn").val();
         queryFetch(searchTerm, nextPage);
     });
@@ -162,9 +163,11 @@ $(document).ready(function(){
         $("main").css("display", "block");
         let searchTerm = $(this).data("id");
         let element = document.querySelector("main");
-        let searchTermHTML = `<h2 class="search-term-display">${searchTerm}</h2>`
+        let searchTermHTML = `<h2 class="search-term-display">Searched for: ${searchTerm}</h2>`
         $(".searched-term-display-container").html(searchTermHTML);
         queryFetch(searchTerm, 1);
+        $(".prev-btn").data("id", searchTerm);
+        $(".next-btn").data("id", searchTerm);
         element.scrollIntoView({behavior: "smooth"});
     });
 
@@ -174,9 +177,11 @@ $(document).ready(function(){
         $("main").css("display", "block");
         let searchTerm = $(this).data("id");
         let element = document.querySelector("main");
-        let searchTermHTML = `<h2 class="search-term-display">${searchTerm}</h2>`
+        let searchTermHTML = `<h2 class="search-term-display">Searched for: ${searchTerm}</h2>`
         $(".searched-term-display-container").html(searchTermHTML);
         queryFetch(searchTerm, 1);
+        $(".prev-btn").data("id", searchTerm);
+        $(".next-btn").data("id", searchTerm);
         element.scrollIntoView({behavior: "smooth"});
     });
 

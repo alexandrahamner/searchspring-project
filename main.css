@@ -50,7 +50,7 @@
     background-color: #d3f8e2;
 }
 
-#dresses div .shop-now-btn  {
+#dresses div .btn-styling  {
     background-color: #D05A69;
 }
 
@@ -58,7 +58,7 @@
     background-color: #a9def9;
 }
 
-#shoes div .shop-now-btn {
+#shoes div .btn-styling {
     background-color: #DCB17C;
 }
 
@@ -66,7 +66,7 @@
     background-color: #f694c1;
 }
 
-#jeans div .shop-now-btn  {
+#jeans div .btn-styling  {
     background-color: #7D8993;
 }
 
@@ -74,17 +74,17 @@
     background-color: #ede7b1;
 }
 
-#tops div .shop-now-btn {
+#tops div .btn-styling{
     background-color: #A68CB7;
 }
 
-.shop-now-btn, .shop-now-btn-lg {
+.btn-styling, .shop-now-btn-lg {
     border: none;
     border-radius: 32px;
     color: white;
 }
 
-.shop-now-btn {
+.btn-styling {
     padding: 10px;
 }
 
@@ -95,29 +95,50 @@
     width: 75%;
 }
 
-.shop-now-btn:hover, .shop-now-btn-lg:hover {
+.btn-styling:hover, .shop-now-btn-lg:hover {
     transform: translateY(-4px);
     cursor: pointer;
     -webkit-box-shadow: 0px 10px 13px -7px #fcf8f8, 5px 5px 15px 5px rgba(0,0,0,0); 
     box-shadow: 0px 10px 13px -7px #f5f5f5, 5px 5px 15px 5px rgba(0,0,0,0);
 }
 
+.btn-styling:focus, .shop-now-btn-lg:focus {
+    outline: none;
+}
+
 .prev-btn, .next-btn {
     display: none;
+    background-color: #57c4e5;
 }
+
+/* Displays when a search is made */
 
 main {
     display: none;
 }
 
-.grid-container {
-    display: none;
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.search-term-display-container {
+    margin: 20px 0;
+}
+
+.search-term-display {
+    font-size: 2.5rem;
 }
 
 .results {
     display: flex;
     justify-content: center;
 }
+
+/* Result Card Styling */
 
 .result-card {
     display: flex;
