@@ -133,14 +133,14 @@ const createResultCard = (formattedObj) => {
 const displayResultObjects = (formattedObjects) => {
     console.log(formattedObjects);
     let resultsHTML = "";
-    let element = document.querySelector("main");
+    let element = document.querySelector(".index-main");
     //Conditional for invalid/no result searches
     if(formattedObjects.length != 0) {
         formattedObjects.forEach(obj => {
             resultsHTML += createResultCard(obj);
         })
         $(".grid-container").css("display", "grid");
-        $("main").css("display", "block");
+        $(".index-main").css("display", "block");
         $(".no-results").css("display", "none");
         $("#search-results").html(resultsHTML);
     } else {
@@ -156,6 +156,7 @@ const displayResultObjects = (formattedObjects) => {
 
 // DOM EVENTS USING JQUERY
 $(document).ready(function(){
+
     // User input taken from the search bar, passed through the query fetch function and create object function, for now.
     $("#search-btn").click((e) => {
         e.preventDefault();
