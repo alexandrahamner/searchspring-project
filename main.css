@@ -53,6 +53,10 @@
     color: var(--sky-blue);
 }
 
+.add-cart-item {
+    margin-right: 10px;
+}
+
 /* Header */
 .fashion-header {
     margin: 20px;
