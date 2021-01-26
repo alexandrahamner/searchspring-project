@@ -27,13 +27,20 @@
     -webkit-box-shadow: none;
 }
 
+.ui.menu .item {
+    padding: .5em;
+}
+
 .ui.menu .item>img:not(.ui) {
     /* Logo */
     width: 7.5rem;
 }
 
-.borderless {
-    padding: 0 2%;
+.nav-link {
+    /* About Us Link */
+    color: var(--sky-blue);
+    font-family: var(--pacifico);
+    font-size: 1rem;
 }
 
 .ui.icon.input>input {
@@ -159,7 +166,7 @@
 
 /* Displays when a search is made */
 
-main {
+.index-main {
     display: none;
 }
 
@@ -393,6 +400,11 @@ i.icon.github.alternate:before,  i.icon.linkedin:before{
 
 /* Large devices (desktops, 1032px and up) */
 @media screen and (min-width:1032px) { 
+    .nav-link {
+        /* About Us Link */
+        font-size: 1.4rem;
+    }
+
     .ui.icon.input>input {
         /* Search Bar */
         width: 500px;

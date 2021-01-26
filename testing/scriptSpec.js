@@ -23,11 +23,6 @@ describe('createResultCard', function() {
       });
 })
 
-describe('createResultCard', function() {
-    it('should be a defined function', function() {
-        expect(typeof createResultCard).toBe('function');
-      });
-})
 
 describe('displayResultObjects', function() {
     it('should be a defined function', function() {
