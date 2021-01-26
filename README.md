@@ -7,7 +7,7 @@
 <hr />
 
 ### Demo
-[Shopily Demo](https://gifted-yonath-2c84e2.netlify.app/)
+[Shopily Demo](https://shopily.netlify.app/)
 
 ### Technologies
 - HTML 5
