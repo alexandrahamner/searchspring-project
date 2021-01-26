@@ -21,12 +21,14 @@
     background-size: cover;
 }
 
+/* Navbar */
 .ui.menu {
     box-shadow: none;
     -webkit-box-shadow: none;
 }
 
 .ui.menu .item>img:not(.ui) {
+    /* Logo */
     width: 7.5rem;
 }
 
@@ -34,6 +36,17 @@
     padding: 0 2%;
 }
 
+.ui.icon.input>input {
+    /* Search Bar */
+    border: 1px solid var(--sky-blue);
+}
+
+.ui.icon.input>i.icon:after, .ui.icon.input>i.icon:before {
+    /* Search Icon */
+    color: var(--sky-blue);
+}
+
+/* Header */
 .fashion-header {
     margin: 20px;
     height: 50vh;
@@ -280,6 +293,11 @@ i.icon.github.alternate:before,  i.icon.linkedin:before{
 
 /* Small to Medium devices (768px and up) */
 @media screen and (min-width:600px) { 
+    .ui.icon.input>input {
+        /* Search Bar */
+        width: 400px;
+    }
+
     .fashion-header {
         display: flex;
         justify-content: space-between;
@@ -375,6 +393,11 @@ i.icon.github.alternate:before,  i.icon.linkedin:before{
 
 /* Large devices (desktops, 1032px and up) */
 @media screen and (min-width:1032px) { 
+    .ui.icon.input>input {
+        /* Search Bar */
+        width: 500px;
+    }
+
     .large-header div h1 {
     font-size: 3.5rem;
     }
