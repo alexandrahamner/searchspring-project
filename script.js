@@ -8,7 +8,7 @@ const queryFetch = (searchTerm, pageNumber) => {
             q: searchTerm,
             resultsFormat: 'native',
             page: pageNumber,
-            siteId: siteId
+            siteId: "scmq7n"
         }))
             .then(response => response.json())
             .then(data => {
