@@ -1,6 +1,5 @@
 # Shopily
 
-<img width="1054" alt="Better Reads Logo" src="shopily-screenshot.png">
 
 <p align="center"> This Searchspring project, called Shopily, is a simple search application implementing the Search API. Users can search for clothing and makeup items, and the results are displayed in a grid format. The app is also mobile responsive.<p>
   
