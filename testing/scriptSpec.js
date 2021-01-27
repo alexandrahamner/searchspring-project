@@ -36,17 +36,8 @@ describe('displayResultObjects', function() {
 })
 
 describe('paginationData', function() {
-  beforeEach(function() {
-		spyOn(window, 'fetch').and.callThrough();
-    let data = queryFetch("dress", 1)
-    spyOn(object, "paginationData").and.callThrough;
-    paginationData(data);
-    });
   // checking for defined function
     it('should be a defined function', function() {
         expect(typeof paginationData).toBe('function');
       });
-    it('should return an object', function() {
-      expect(typeof paginationData(data)).toBe('object');
-    })
 })
