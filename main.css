@@ -54,7 +54,7 @@
 }
 
 .add-cart-item {
-    margin-right: 10px;
+    display: none;
 }
 
 /* Header */
@@ -302,11 +302,16 @@ i.icon.github.alternate:before,  i.icon.linkedin:before{
     line-height: -2;
 }
 
-/* Small to Medium devices (768px and up) */
-@media screen and (min-width:600px) { 
+/* Small to Medium devices (650px and up) */
+@media screen and (min-width:650px) { 
     .ui.icon.input>input {
         /* Search Bar */
         width: 400px;
+    }
+
+    .add-cart-item {
+        display: block;
+        margin-right: 10px;
     }
 
     .fashion-header {
